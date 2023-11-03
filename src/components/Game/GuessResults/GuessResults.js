@@ -22,8 +22,9 @@ function GuessResults({ guesses, answer }) {
     <div className="guess-results">
       {rows.map((_, i) => {
         const guess = checkGuess(guesses[i], answer);
+        const guessIsCorrect = guesses[i] === answer;
         return (
-          <p className="guess" key={i}>
+          <p className={`guess ${guessIsCorrect ? "correct" : ""}`} key={i}>
             {columns.map((_, i) => (
               <Cell
                 key={i}
