@@ -5,6 +5,7 @@ import GuessInput from "./GuessInput";
 import GuessResults from "./GuessResults";
 import GameOverBanner from "./GameOverBanner";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import Keyboard from "./Keyboard";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -24,9 +25,11 @@ function Game() {
   const gameOver = hasCorrectGuess || hasUsedAllGuesses;
 
   return (
-    <div className="game-wrapper">
+    <>
       <GuessResults guesses={guesses} answer={answer} />
       <GuessInput addGuess={addGuess} gameOver={gameOver} />
+      <Keyboard guesses={guesses} answer={answer} />
+
       {gameOver && (
         <GameOverBanner
           status={hasCorrectGuess ? "happy" : "sad"}
@@ -34,7 +37,7 @@ function Game() {
           answer={answer}
         />
       )}
-    </div>
+    </>
   );
 }
 
